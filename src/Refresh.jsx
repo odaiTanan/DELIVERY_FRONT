@@ -31,6 +31,8 @@ const Refresh = () => {
         }
         setLoading(false);
       });
+    } else {
+      setLoading(false);
     }
   }, []);
 
