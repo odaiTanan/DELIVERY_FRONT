@@ -8,7 +8,7 @@ exports.handler = async (event, context) => {
   try {
     const response = await axios({
       method: event.httpMethod,
-      url: "http://odaidelivery.atwebpages.com/show/menu.php",
+      url: url,
       data: event.body,
       headers: {
         'Content-Type': 'application/json',
