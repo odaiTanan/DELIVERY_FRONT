@@ -1,8 +1,8 @@
-const axios = require('axios');
+import axios from "axios"
 
 exports.handler = async (event, context) => {
   const path = event.path.replace('/.netlify/functions/proxy', '');
-  const baseUrl = 'http://odaidelivery.atwebpages.com/api/';
+  const baseUrl = 'http://odaidelivery.atwebpages.com';
   const url = `${baseUrl}${path}`;
 
   try {
@@ -15,11 +15,13 @@ exports.handler = async (event, context) => {
       },
     });
 
+    // إرجاع البيانات كـ JSON
     return {
       statusCode: response.status,
       body: JSON.stringify(response.data),
     };
   } catch (error) {
+    // إرجاع خطأ إذا فشل الطلب
     return {
       statusCode: error.response ? error.response.status : 500,
       body: JSON.stringify({ error: error.message }),
