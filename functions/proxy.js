@@ -1,5 +1,4 @@
-import axios from "axios"
-
+const axios = require('axios');
 exports.handler = async (event, context) => {
   const path = event.path.replace('/.netlify/functions/proxy', '');
   const baseUrl = 'http://odaidelivery.atwebpages.com';
