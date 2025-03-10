@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const configureSlice = createSlice({
-  initialState: "http://odaidelivery.atwebpages.com/",
+  initialState: "/.netlify/functions/proxy/",
   name: "configureSlice",
   reducers: {},
 });
