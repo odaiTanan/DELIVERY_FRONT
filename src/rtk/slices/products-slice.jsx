@@ -5,10 +5,9 @@ export const fetchedProducts = createAsyncThunk(
   "productsSlice/fetchedProducts",
   async (baseUrl) => {
     const baseUr = baseUrl;
-    const res = await fetch(`${baseUr}show/menu.php`);
-    const jsonData=await res.json();
-    const data= await jsonData.data;
-    return data;
+    const res = await axios.get(`/.netlify/functions/proxy/show/menu.php`);
+   
+    return res.data;
   }
 );
 const productsSlice = createSlice({
