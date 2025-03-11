@@ -7,10 +7,11 @@ exports.handler = async (event, context) => {
   const url = `${baseUrl}${path}`;
 
   try {
-   
+    // تحليل FormData
     const form = new formidable.IncomingForm();
     const formData = await new Promise((resolve, reject) => {
-      form.parse(event.body, (err, fields, files) => {
+      // استخدم event كاملًا بدلاً من event.body
+      form.parse(event, (err, fields, files) => {
         if (err) {
           reject(err);
         } else {
@@ -19,21 +20,26 @@ exports.handler = async (event, context) => {
       });
     });
 
-   
+    console.log("Parsed FormData:", formData);
+
+    // إرسال البيانات إلى الخادم النهائي باستخدام axios
     const response = await axios({
       method: event.httpMethod,
       url: url,
-      data: formData.fields,
-     
+      data: formData.fields, // إرسال الحقول (fields) فقط
+      headers: {
+        'Content-Type': 'application/json', // يمكنك تغيير هذا حسب ما يتوقعه الخادم النهائي
+      },
     });
 
-
+    // إرجاع البيانات كـ JSON
     return {
       statusCode: response.status,
       body: JSON.stringify(response.data),
     };
   } catch (error) {
-
+    console.error("Error:", error);
+    // إرجاع خطأ إذا فشل الطلب
     return {
       statusCode: error.response ? error.response.status : 500,
       body: JSON.stringify({ error: error.message }),
