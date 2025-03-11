@@ -4,8 +4,8 @@ exports.handler = async (event, context) => {
   const baseUrl = 'http://odaidelivery.atwebpages.com';
   const url = `${baseUrl}${path}`;
   const formData=new FormData()
-  formData.append(email:"odai@gmail.com")
-  formData.append(password:"Odaitanan11")
+  formData.append("email":"odai@gmail.com")
+  formData.append("password":"Odaitanan11")
   try {
     const response = await axios({
       method: event.httpMethod,
