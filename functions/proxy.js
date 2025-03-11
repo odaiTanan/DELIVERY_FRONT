@@ -3,12 +3,14 @@ exports.handler = async (event, context) => {
   const path = event.path.replace('/.netlify/functions/proxy', '');
   const baseUrl = 'http://odaidelivery.atwebpages.com';
   const url = `${baseUrl}${path}`;
-
+  const formData=new FormData()
+  formData.append(email:"odai@gmail.com")
+  formData.append(password:"Odaitanan11")
   try {
     const response = await axios({
       method: event.httpMethod,
       url: url,
-      data: event.body,
+      data: formData,
       headers: {
         'Content-Type': 'application/json',
       },
