@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
     // إرجاع البيانات كـ JSON
     return {
       statusCode: response.status,
-      body: JSON.stringify(response.data),
+      body: JSON.stringify(event.body),
     };
   } catch (error) {
     // إرجاع خطأ إذا فشل الطلب
