@@ -1,18 +1,31 @@
 const axios = require('axios');
+const formidable = require('formidable');
+
 exports.handler = async (event, context) => {
   const path = event.path.replace('/.netlify/functions/proxy', '');
   const baseUrl = 'http://odaidelivery.atwebpages.com';
   const url = `${baseUrl}${path}`;
-  const formData=new FormData()
-  formData.append("email":"odai@gmail.com")
-  formData.append("password":"Odaitanan11")
+
   try {
+    // تحليل FormData
+    const form = new formidable.IncomingForm();
+    const formData = await new Promise((resolve, reject) => {
+      form.parse(event.body, (err, fields, files) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve({ fields, files });
+        }
+      });
+    });
+
+    // إرسال البيانات إلى الخادم النهائي باستخدام axios
     const response = await axios({
       method: event.httpMethod,
       url: url,
-      data: formData,
+      data: formData.fields, // إرسال الحقول (fields) فقط
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json', // يمكنك تغيير هذا حسب ما يتوقعه الخادم النهائي
       },
     });
 
