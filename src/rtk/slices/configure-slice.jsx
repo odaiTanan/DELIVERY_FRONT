@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const configureSlice = createSlice({
-  initialState: "https://odaidelivery.atwebpages.com/",
+  initialState: "http://odaidelivery.atwebpages.com/",
   name: "configureSlice",
   reducers: {},
 });
