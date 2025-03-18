@@ -5,9 +5,7 @@ export const fetchedProducts = createAsyncThunk(
   "productsSlice/fetchedProducts",
   async (baseUrl) => {
     const baseUr = baseUrl;
-    const res = await axios.get(`${baseUr}show/menu.php`,{
-  httpsAgent: new (require("https").Agent)({ rejectUnauthorized: false }),
-});
+    const res = await axios.get(`${baseUr}show/menu.php`);
    
     return res.data;
   }
