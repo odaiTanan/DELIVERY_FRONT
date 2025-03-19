@@ -13,9 +13,9 @@ export const addUser = createAsyncThunk(
       cookie.remove("rule");
       let res = "";
       res = await axios.post(`${baseUrl}auth/sign${InOrUp}.php`, formData)
-});
+
       const result = await res.data;
-      return result;
+      return result; 
     } catch (e) {
       console.log(e);
       return rejectWithValue(e);
