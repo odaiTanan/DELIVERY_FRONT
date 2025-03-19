@@ -5,7 +5,10 @@ export const fetchedProducts = createAsyncThunk(
   "productsSlice/fetchedProducts",
   async (baseUrl) => {
     const baseUr = baseUrl;
-    const res = await axios.get(`${baseUr}show/menu.php`);
+    const res = await axios.get(`${baseUr}show/menu.php`,{
+	
+		mode: 'no-cors',
+	});
    
     return res.data;
   }
