@@ -12,7 +12,7 @@ export const addUser = createAsyncThunk(
       cookie.remove("token");
       cookie.remove("rule");
       let res = "";
-      res = await axios.post(`${baseUrl}auth/sign${InOrUp}.php`, formData),
+      res = await axios.post(`${baseUrl}auth/sign${InOrUp}.php`, formData)
 });
       const result = await res.data;
       return result;
