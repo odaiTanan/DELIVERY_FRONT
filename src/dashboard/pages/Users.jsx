@@ -78,10 +78,10 @@ const Users = () => {
                         <i className="fa-solid fa-pen"></i>
                       </Link>
 
-                      <i
+                      {userJson.rule!=99 && <i
                         className="fa-solid fa-trash"
                         onClick={() => remove(userJson.id)}
-                      ></i>
+                      ></i>}
                     </td>
                   </tr>
                 );
