@@ -7,7 +7,7 @@ export const fetchedProducts = createAsyncThunk(
     const baseUr = baseUrl;
     const res = await axios.get(`${baseUr}show/menu.php`,{
 	
-		mode: 'no-cors',
+		mode: 'cors',
 	});
    
     return res.data;
