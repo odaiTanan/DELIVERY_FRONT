@@ -31,6 +31,7 @@ const Refresh = () => {
         }
       }
       setLoading(false);
+      nav("/myrequests)
     });
   } else {
     setLoading(false);
