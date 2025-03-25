@@ -4,12 +4,12 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-  import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import Loading from "../Loading";
 const MyRequests = () => {
   const [update, setUpdate] = useState(false);
   const baseUrl = useSelector((state) => state.baseUrl);
- const deleteMessage = () => toast.success("request deleted successfully")
+  const deleteMessage = () => toast.success("request deleted successfully");
   const token = useSelector((state) => state.user?.user?.token);
   const [loading, setLoading] = useState(false);
   const nav = useNavigate();
@@ -17,11 +17,13 @@ const MyRequests = () => {
   //get all user for the user
   useEffect(() => {
     const formData = new FormData();
-   token&&(
-     formData.append("token", token)
-    axios.post(baseUrl + "filter/requests.php", formData).then((res) => {setRequests([res.data])})
-  )
-  }, [update,token]);
+    if (token) {
+      formData.append("token", token);
+      axios.post(baseUrl + "filter/requests.php", formData).then((res) => {
+        setRequests([res.data]);
+      });
+    }
+  }, [update, token]);
   async function deleteRequest(id) {
     try {
       const formDataDeleteToken = new FormData();
@@ -84,8 +86,8 @@ const MyRequests = () => {
         </Link>
       </div>
       {loading ? <Loading /> : requestsShow}
-      
-        <ToastContainer />
+
+      <ToastContainer />
     </div>
   );
 };
