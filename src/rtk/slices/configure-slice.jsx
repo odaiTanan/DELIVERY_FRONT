@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const configureSlice = createSlice({
-  //initialState: "https://corsproxy.io/http://deliveryodai.mooo.com/",
-  initialState: "http://localhost/resturantpost/",
+  initialState: "https://corsproxy.io/http://deliveryodai.mooo.com/",
+ 
   name: "configureSlice",
   reducers: {},
 });
