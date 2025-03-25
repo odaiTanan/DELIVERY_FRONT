@@ -24,6 +24,8 @@ const Refresh = () => {
         baseUrl: baseUrl,
         token: cookie.get("token"),
       })
+      cookie.remove("token")
+      cookie.remove("rule)
     ).then((res) => {
       if (res.error) {
         if (res.payload.response.status == 401) {
