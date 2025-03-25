@@ -81,7 +81,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (user) {
-      nav(-1);
+      nav("/");
     }
   }, [user]);
   //submit function to send data
