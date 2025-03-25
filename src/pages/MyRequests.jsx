@@ -73,8 +73,7 @@ const MyRequests = () => {
               ? "Out For Delivery"
               : "Delivered"}
           </div>
-        </div>{" "}
-        <ToastContainer />
+        </div>
       </div>
     );
   });
@@ -87,8 +86,10 @@ const MyRequests = () => {
         >
           Home
         </Link>
-      </div>{" "}
+      </div>
       {loading ? <Loading /> : requestsShow}
+      
+        <ToastContainer />
     </div>
   );
 };
