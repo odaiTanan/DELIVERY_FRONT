@@ -40,7 +40,7 @@ const Refresh = () => {
   } else {
     setLoading(false);
   }
-}, 1200);
+}, 2000);
   return () => clearTimeout(timer);
   }, []);
 
