@@ -21,9 +21,7 @@ const MyRequests = () => {
         setRequests([res.data]);
       })
       .catch((e) => {
-        // if (e.response.status == 401) {
-        nav("/auth/signIn");
-        //}
+      
       });
   }, []);
   async function deleteRequest(id) {
