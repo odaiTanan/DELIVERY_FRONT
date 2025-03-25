@@ -4,9 +4,11 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+  import { ToastContainer, toast } from 'react-toastify';
 import Loading from "../Loading";
 const MyRequests = () => {
   const baseUrl = useSelector((state) => state.baseUrl);
+ const deleteMessage = () => toast.success("request deleted successfully")
   const token = useSelector((state) => state.user?.user?.token);
   const [loading, setLoading] = useState(false);
   const nav = useNavigate();
@@ -72,6 +74,7 @@ const MyRequests = () => {
               : "Delivered"}
           </div>
         </div>{" "}
+        <ToastContainer />
       </div>
     );
   });
