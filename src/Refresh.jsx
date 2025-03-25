@@ -16,31 +16,24 @@ const Refresh = () => {
   const nav = useNavigate();
   //refresh token
   useEffect(() => {
-   const timer= setTimeout(() => {
-  if (cookie.get("token")) {
-    
-
-    //if there is an old token refresh
-    dispatch(
-      refresh({
-        baseUrl: baseUrl,
-        token: cookie.get("token"),
-      })
-    
-    ).then((res) => {
-      if (res.error) {
-        if (res.payload.response.status == 401) {
-          nav("/auth/signin");
+    if (cookie.get("token")) {
+      //if there is an old token refresh
+      dispatch(
+        refresh({
+          baseUrl: baseUrl,
+          token: cookie.get("token"),
+        })
+      ).then((res) => {
+        if (res.error) {
+          if (res.payload.response.status == 401) {
+            nav("/auth/signin");
+          }
         }
-      }
+        setLoading(false);
+      });
+    } else {
       setLoading(false);
-  
-    });
-  } else {
-    setLoading(false);
-  }
-}, 2000);
-  return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
