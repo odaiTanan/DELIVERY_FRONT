@@ -7,6 +7,7 @@ import { useState } from "react";
   import { ToastContainer, toast } from 'react-toastify';
 import Loading from "../Loading";
 const MyRequests = () => {
+  const [update, setUpdate] = useState(false);
   const baseUrl = useSelector((state) => state.baseUrl);
  const deleteMessage = () => toast.success("request deleted successfully")
   const token = useSelector((state) => state.user?.user?.token);
@@ -25,7 +26,7 @@ const MyRequests = () => {
       .catch((e) => {
       
       });
-  }, []);
+  }, [update]);
   async function deleteRequest(id) {
     try {
       const formDataDeleteToken = new FormData();
