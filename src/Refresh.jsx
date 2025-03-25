@@ -33,7 +33,7 @@ const Refresh = () => {
       });
     } else {
       setLoading(false);
-    }, 500);
+    }, 1000);
  
   }, []);
 
