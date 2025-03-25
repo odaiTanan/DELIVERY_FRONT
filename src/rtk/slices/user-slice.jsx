@@ -73,8 +73,8 @@ const userSlice = createSlice({
         const token = action.payload.token;
         const rule = action.payload.rule;
         const cookie = new Cookies();
-        cookie.set("token", token);
-        cookie.set("rule", rule);
+        cookie.set("token", token, { path: "/" });
+        cookie.set("rule", rule, { path: "/" });
         return { error: false, loading: false, user: action.payload };
       })
       .addCase(refresh.rejected, (state, action) => {
