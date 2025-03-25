@@ -18,14 +18,16 @@ const Refresh = () => {
   useEffect(() => {
    const timer= setTimeout(() => {
   if (cookie.get("token")) {
+    const token=cookie.get("token")
+      cookie.remove("token")
+      cookie.remove("rule")
     //if there is an old token refresh
     dispatch(
       refresh({
         baseUrl: baseUrl,
-        token: cookie.get("token"),
+        token: token,
       })
-      cookie.remove("token")
-      cookie.remove("rule)
+    
     ).then((res) => {
       if (res.error) {
         if (res.payload.response.status == 401) {
