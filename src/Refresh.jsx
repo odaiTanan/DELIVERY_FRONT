@@ -16,7 +16,7 @@ const Refresh = () => {
   const nav = useNavigate();
   //refresh token
   useEffect(() => {
-    if (cookie.get("token")) {
+    setTimeout(   if (cookie.get("token")) {
       //if there is an old token refresh
       dispatch(
         refresh({
@@ -33,7 +33,8 @@ const Refresh = () => {
       });
     } else {
       setLoading(false);
-    }
+    }, 500);
+ 
   }, []);
 
   return (
