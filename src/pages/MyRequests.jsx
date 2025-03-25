@@ -17,16 +17,14 @@ const MyRequests = () => {
   //get all user for the user
   useEffect(() => {
     const formData = new FormData();
-    formData.append("token", token);
+   token&&( formData.append("token", token);
     axios
       .post(baseUrl + "filter/requests.php", formData)
       .then((res) => {
         setRequests([res.data]);
       })
-      .catch((e) => {
-      
-      });
-  }, [update]);
+  )
+  }, [update,token]);
   async function deleteRequest(id) {
     try {
       const formDataDeleteToken = new FormData();
