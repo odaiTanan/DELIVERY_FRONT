@@ -84,8 +84,8 @@ const Navbar = () => {
             <div
               onClick={() => {
                 const cookie = new Cookies();
-                cookie.remove("token");
-                cookie.remove("rule");
+                cookie.remove("token",{ path: "/" });
+                cookie.remove("rule",{ path: "/" });
                 window.location.pathname = "/auth/signIn";
               }}
               className="p-1 !text-orange-600  decoration-none transition-all duration-150 px-4 mobile:text-[15px] mobile:px-2 mobile:py-1 font-normal  text-[18px] rounded-3xl hover:bg-orange-600 hover:!text-white bg-white border-2 border-orange-600"
