@@ -17,12 +17,9 @@ const MyRequests = () => {
   //get all user for the user
   useEffect(() => {
     const formData = new FormData();
-   token&&( formData.append("token", token);
-    axios
-      .post(baseUrl + "filter/requests.php", formData)
-      .then((res) => {
-        setRequests([res.data]);
-      })
+   token&&(
+     formData.append("token", token)
+    axios.post(baseUrl + "filter/requests.php", formData).then((res) => {setRequests([res.data])})
   )
   }, [update,token]);
   async function deleteRequest(id) {
